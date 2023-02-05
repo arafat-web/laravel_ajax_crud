@@ -9,9 +9,11 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{asset('assets')}}/webToast.css">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="{{asset('assets')}}/webToast.js"></script>
     <style>
         body {
             color: #566787;
@@ -446,7 +448,10 @@
             success: function (response) {
                 $('#addEmployeeModal').modal('hide');
                 employeeList();
-                alert(response.message);
+                webToast.Success({
+                    status: '',
+                    message: response.message
+                });
             }
         })
     }
@@ -472,7 +477,10 @@
             success: function (response) {
                 $('#editEmployeeModal').modal('hide');
                 employeeList();
-                alert(response.message);
+                webToast.Success({
+                    status: '',
+                    message: response.message
+                });
             }
         })
     }
@@ -510,7 +518,10 @@
             url: "{{ url('employee-delete') }}",
             success: function (response) {
                 employeeList();
-                alert(response.message);
+                webToast.Success({
+                    status: '',
+                    message: response.message
+                });
             }
         })
     }
